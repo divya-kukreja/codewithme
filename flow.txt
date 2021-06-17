@@ -1,0 +1,57 @@
+project -- divyasblog
+app - blog
+
+divyasblog.urls --> blog.urls --> blog.views --> templates/static
+
+created 2 apps -- 1. blog , 2.home
+blog -->  all blogposts related stuff 
+home --> home page , contact , aboutus all basic stuff
+
+home -- main page , contact , about 
+blog -- blogpost , blogs home
+same make templates   -- add templates directory to settings
+
+createsuperuser --> make initial migrations --> makemigrations,migrate 
+
+Register the apps in settings.py
+
+******************** Making contact page ****************************************
+
+contact.html --> add form in block body , method=post , action = /contact --> add {% csrf_token %}
+Make the Contact model (database of contact -- add the neccessary fields) --> apply migrations
+Register your model in admin.py 
+
+abi sari values jo hum as a input le rhe hai using contact.html se --> abi humko vo views me leke aani hai taki vo apne databse me aa jyae--
+
+views.py -->  handle post request by creating objects of model --> and saving themm
+
+!! boommmm!!! 'Done '
+
+*****************************************************************************************
+Designing --> To make the corresponding links active -- add block active -- in navbar and then active in the corresponding html pages
+
+
+Designed --> home page --> blog home page.
+
+
+********************** Posts ************************************************************
+create Post db in models.py --> blog
+
+in 'http://127.0.0.1:8000/blog/' we have to display all our blogs -- so handle this in views.py  --> in blogHome
+and then render it on blogHome.html (all blog posts ) ---> using Post model
+
+abi humko corresponding post -- using slug blogpost.html pe display krana hai --> 
+views.py --> handle blogPost function --> render it on blogpost.html
+
+********************* Search ***************************************************
+make search a get request --> action ="/search" --> create search path in home.urls --> handle it in views.py 
+and then display the search results on search.html page -- similar to blogHome page of searched queries
+
+********************* API's for Posting Comments *********************************
+blog -- urls.py -- add path('postComment',views.postComment,name='postComment') --> handle that in views.py in def postComment():
+modify blogPost(request,slug) -- with additional comments field 
+
+
+
+
+
